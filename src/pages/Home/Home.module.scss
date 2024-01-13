@@ -1,0 +1,54 @@
+.introContainer {
+  min-height: calc(100vh - 64px);
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.arrowContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow {
+  width: 12px;
+  height: 12px;
+  transform: rotate(45deg);
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  animation: arrow-wave 2s infinite ease-in-out;
+  animation-direction: alternate;
+
+  &Light {
+    border-color: white;
+  }
+
+  &:nth-of-type(1) {
+    animation-delay: 0s;
+  }
+  &:nth-of-type(2) {
+    top: 1em;
+    animation-delay: 0.2s;
+  }
+  &:nth-of-type(3) {
+    top: 2em;
+    animation-delay: 0.4s;
+  }
+}
+
+@keyframes arrow-wave {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
