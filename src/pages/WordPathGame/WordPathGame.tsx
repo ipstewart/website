@@ -23,7 +23,7 @@ function WordPathGame() {
 
   const [warningMessage, setWarningMessage] = useState<string | null>(null);
 
-  const [openInfoDialog, setOpenInfoDialog] = useState(false);
+  const [openInfoDialog, setOpenInfoDialog] = useState(true);
 
   const wordPathProviderValue = useMemo(
     () => ({

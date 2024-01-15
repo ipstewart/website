@@ -7,6 +7,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 
+import { letterPoints } from '../WordPath.utils';
+
 interface InfoDialogProps {
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -48,7 +50,17 @@ function InfoDialog({ open, setOpen }: InfoDialogProps) {
             Legal words are words that appear in the Merriam Webster dictionary that have not
             already been submitted.
           </Typography>
-          <Typography variant="subtitle2">
+
+          <Typography variant="h6">Points per Letter</Typography>
+          {[1, 2, 3, 4].map((value) => (
+            <Typography key={value} variant="body2" mb={1}>
+              {Object.keys(letterPoints)
+                .filter((key) => letterPoints[key] === value)
+                .join(',')}
+              : {value} points
+            </Typography>
+          ))}
+          <Typography variant="subtitle2" mt={2}>
             Created by Ian Stewart. Check out my main site and contact me at{' '}
             <Link href="/" underline="none">
               ianpstewart.com
