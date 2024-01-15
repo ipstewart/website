@@ -1,0 +1,17 @@
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 25px;
+  background-color: #000;
+  animation: cursorFlash 1s infinite;
+}
+
+@keyframes cursorFlash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

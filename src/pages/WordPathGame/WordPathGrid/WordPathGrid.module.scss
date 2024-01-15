@@ -1,0 +1,24 @@
+.letterButton {
+  height: calc(var(--letter-radius) * 2);
+  width: calc(var(--letter-radius) * 2);
+}
+
+.verticalPath {
+  height: var(--path-gap);
+  background-color: #e0e0e0;
+  margin-left: calc(var(--letter-radius) - var(--path-thickness) / 2);
+}
+
+.horizontalPath {
+  width: var(--path-gap);
+  background-color: #e0e0e0;
+  margin-top: calc(var(--letter-radius) - var(--path-thickness) / 2);
+}
+
+.diagonalPath {
+  position: absolute;
+  top: calc(var(--letter-radius) * 1.5);
+  left: calc(var(--path-thickness) / 2);
+  height: calc(sqrt(2) * var(--letter-radius) + var(--path-thickness));
+  background-color: #e0e0e0;
+}

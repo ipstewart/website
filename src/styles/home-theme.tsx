@@ -19,6 +19,7 @@ export const getHomeTheme = (mode: PaletteMode): ThemeOptions => ({
           primary: {
             main: '#606C38',
             light: '#A0B168',
+            contrastText: '#FFF',
           },
           secondary: {
             main: '#DDA15E',
@@ -33,6 +34,7 @@ export const getHomeTheme = (mode: PaletteMode): ThemeOptions => ({
           primary: {
             main: '#183D3D',
             light: '#328080',
+            contrastText: '#FFF',
           },
           secondary: {
             main: '#5C8374',
