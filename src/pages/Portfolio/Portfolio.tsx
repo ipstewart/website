@@ -18,7 +18,7 @@ function Portfolio() {
   const portfolioItems: PortfolioItem[] = [
     {
       title: 'Word Node Game',
-      image: 'images/node-game-2.png',
+      image: 'images/node-game.png',
       link: '/word-node-game',
       description:
         'Inspired by the New York Times games, the Word Node Game is an original word puzzle that mixes vocabulary with spatial aptitude.',

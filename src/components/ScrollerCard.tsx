@@ -1,4 +1,6 @@
-import { Card, Grid, Container } from '@mui/material';
+import Card from '@mui/material/Card';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 
 const ScrollerCard = ({
   children,
