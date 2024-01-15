@@ -24,6 +24,7 @@ function WordPathGrid() {
 
   useEffect(() => {
     generateLetterGrid();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -93,6 +94,7 @@ function WordPathGrid() {
     };
 
     updateSelectionMatrix(currentWord);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentWord]);
 
   const newGame = () => {

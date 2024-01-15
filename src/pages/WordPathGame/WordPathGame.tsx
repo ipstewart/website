@@ -1,7 +1,8 @@
 import { ThemeProvider } from '@emotion/react';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import { CssBaseline, IconButton } from '@mui/material';
 import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import IconButton from '@mui/material/IconButton';
 import { useMemo, useState } from 'react';
 
 import { wordPathTheme } from '../../styles/word-path-theme';

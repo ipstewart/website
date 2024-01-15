@@ -1,4 +1,6 @@
-import { Box, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 
 import styles from './Carousel.module.scss';
@@ -9,10 +11,38 @@ interface CarouselItem {
   icon: number;
 }
 
-export function Carousel({ items }: Readonly<{ items: CarouselItem[] }>) {
+export function Carousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [nextIndex, setNextIndex] = useState<number[]>([1, 2]);
   const [prevIndex, setPrevIndex] = useState<number[]>([4, 3]);
+
+  const items: CarouselItem[] = [
+    {
+      title: 'Interactive Web Development',
+      description: 'Build applications using modern web frameworks',
+      icon: 0x1f310,
+    },
+    {
+      title: 'UI/UX Design and Research',
+      description: 'Create intuitive mockups and lead user testing',
+      icon: 0x1f4ca,
+    },
+    {
+      title: 'Full Stack Integration',
+      description: 'Develop APIs and databases to tie in with applications',
+      icon: 0x1f4bb,
+    },
+    {
+      title: 'Containerization and Deployment',
+      description: 'Prepare applications for the cloud with Docker',
+      icon: 0x1f433,
+    },
+    {
+      title: 'Mentor and Follow Best Practices',
+      description: 'Stay up to date on the latest tech and teach other devs',
+      icon: 0x1f393,
+    },
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -48,24 +78,29 @@ export function Carousel({ items }: Readonly<{ items: CarouselItem[] }>) {
   };
 
   return (
-    <Box className={styles.wrapper}>
-      <Box className={styles.carousel}>
-        {items.map(({ title, description, icon }, index) => (
-          <Box key={title} className={getItemClassName(index)}>
-            <Box
-              className={styles.carouselItemIcon}
-              sx={{ backgroundColor: 'primary.light', borderColor: 'primary.main' }}>
-              {String.fromCodePoint(icon)}
-            </Box>
-            <Box
-              className={styles.carouselItemBody}
-              sx={{ backgroundColor: 'background.default', borderColor: 'primary.main' }}>
-              <Typography variant="h6">{title}</Typography>
-              <Typography variant="body2">{description}</Typography>
-            </Box>
+    <Grid container justifyContent="center" alignItems="center" height="100%">
+      <Grid item xs={0} sm={6} />
+      <Grid item xs={12} sm={6}>
+        <Box className={styles.wrapper}>
+          <Box className={styles.carousel}>
+            {items.map(({ title, description, icon }, index) => (
+              <Box key={title} className={getItemClassName(index)}>
+                <Box
+                  className={styles.carouselItemIcon}
+                  sx={{ backgroundColor: 'primary.light', borderColor: 'primary.main' }}>
+                  {String.fromCodePoint(icon)}
+                </Box>
+                <Box
+                  className={styles.carouselItemBody}
+                  sx={{ backgroundColor: 'background.default', borderColor: 'primary.main' }}>
+                  <Typography variant="h6">{title}</Typography>
+                  <Typography variant="body2">{description}</Typography>
+                </Box>
+              </Box>
+            ))}
           </Box>
-        ))}
-      </Box>
-    </Box>
+        </Box>
+      </Grid>
+    </Grid>
   );
 }
