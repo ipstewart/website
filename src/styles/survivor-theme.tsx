@@ -2,6 +2,18 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 export const survivorTheme = responsiveFontSizes(
   createTheme({
+    palette: {
+      background: {
+        default: '#E5FDFF',
+        paper: '#FFFFFF',
+      },
+      primary: {
+        main: '#3BA84F',
+      },
+      secondary: {
+        main: '#274775',
+      },
+    },
     typography: {
       h1: {
         fontFamily: "'Fredoka Variable', sans-serif",
@@ -36,18 +48,6 @@ export const survivorTheme = responsiveFontSizes(
       },
       body2: {
         fontFamily: "'Source Code Pro Variable', sans-serif",
-      },
-    },
-    palette: {
-      background: {
-        default: '#E5FDFF',
-        paper: '#FFFFFF',
-      },
-      primary: {
-        main: '#3BA84F',
-      },
-      secondary: {
-        main: '#274775',
       },
     },
   }),
