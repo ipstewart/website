@@ -7,6 +7,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 
+import { letterPoints } from '../WordPath.utils';
+
 interface InfoDialogProps {
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -29,16 +31,10 @@ function InfoDialog({ open, setOpen }: InfoDialogProps) {
             click <b>ENTER</b> to submit it and lock in your points!
           </Typography>
           <Typography variant="body2" mb={2}>
-            Adding new letters to a word has a cost, which is the length of the path between the
-            last letter in your current word and next letter. As you build a word you will see the
-            amount of points it will earn (based on Scrabble points per word) and its total cost in
-            the parentheses at the top. Once you lock in a word it will add those to your cumulative
-            total.
-          </Typography>
-          <Typography variant="body2" mb={2}>
-            Your remaining movement is the total number of nodes you can traverse before it is game
-            over. Remaining movement is your total points minus your total cost plus 5. It'll
-            continue going up as long as you create words worth more points than they cost!
+            Keep submitting words until the total cost of your words (the length of the path between
+            all the letters) exceeds the total points of your words (summed from all letters, see
+            each letter's value below). The remaining movement value tracks your cumulative total
+            points minus cost plus 5 movement to start.
           </Typography>
           <Typography variant="body2" mb={2}>
             While creating a word you can experiment with options and undo your choices with the{' '}
@@ -48,7 +44,19 @@ function InfoDialog({ open, setOpen }: InfoDialogProps) {
             Legal words are words that appear in the Merriam Webster dictionary that have not
             already been submitted.
           </Typography>
-          <Typography variant="subtitle2">
+
+          <Typography variant="h6" mb={1}>
+            Points per Letter
+          </Typography>
+          {[1, 2, 3, 4].map((value) => (
+            <Typography key={value} variant="body2" mb={1}>
+              {Object.keys(letterPoints)
+                .filter((key) => letterPoints[key] === value)
+                .join(',')}
+              : {value} points
+            </Typography>
+          ))}
+          <Typography variant="subtitle2" mt={2}>
             Created by Ian Stewart. Check out my main site and contact me at{' '}
             <Link href="/" underline="none">
               ianpstewart.com
