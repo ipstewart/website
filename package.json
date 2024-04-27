@@ -19,6 +19,7 @@
     "@fontsource-variable/urbanist": "^5.0.19",
     "@mui/icons-material": "^5.15.4",
     "@mui/material": "^5.15.4",
+    "@vercel/analytics": "^1.2.2",
     "axios": "^1.6.5",
     "d3-scale": "^4.0.2",
     "lottie-web": "^5.12.2",

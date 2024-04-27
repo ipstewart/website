@@ -1,6 +1,7 @@
 import '@fontsource-variable/fredoka';
 import '@fontsource-variable/source-code-pro';
 import '@fontsource-variable/urbanist';
+import { Analytics } from '@vercel/analytics/react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
@@ -29,4 +30,9 @@ const router = createBrowserRouter([
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(<RouterProvider router={router} />);
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <>
+    <Analytics />
+    <RouterProvider router={router} />
+  </>,
+);
