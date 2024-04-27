@@ -7,6 +7,8 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
+import styles from '../Home/Home.module.scss';
+
 interface PortfolioItem {
   title: string;
   image: string;
@@ -47,47 +49,48 @@ function Portfolio() {
   ];
 
   return (
-    <Box className="min-h-screen flex flex-col items-center justify-center py-8">
-      <Box>
-        <Typography variant="h5" mb={2}>
-          Check out <b>my stuff</b> for the latest
+    <Box className={`${styles.minHContent} flex flex-col justify-center gap-5 py-8`} maxWidth="lg">
+      <Card className="w-max">
+        <Typography variant="body1" mb="0" p={2}>
+          Check out some of my projects for the latest.
         </Typography>
-        <Grid container spacing={3}>
-          {portfolioItems.map((item, index) => (
-            <Grid item xs={12} sm={4} key={index}>
-              <Link to={item.link} target="_blank">
-                <Card
-                  className={`h-full flex flex-col ${item.disabled ? 'opacity-60 cursor-default' : 'cursor-pointer hover:shadow-lg hover:scale-105'}`}
-                  sx={{ transition: 'all 0.3s' }}>
-                  <CardMedia
-                    component="img"
-                    className="h-[250px] object-cover"
-                    image={item.image}
-                    title={item.title}
-                  />
-                  <CardContent className="h-full">
-                    <Box className="h-full flex flex-col justify-between gap-2">
-                      <Box>
-                        <Typography variant="h6" component="div">
-                          {item.title}
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary">
-                          {item.description}
-                        </Typography>
-                      </Box>
-                      <Box className="flex gap-2">
-                        {item.tags.map((tag) => (
-                          <Chip key={tag} color="primary" label={tag} size="small" />
-                        ))}
-                      </Box>
+      </Card>
+      <Grid container spacing={3}>
+        {portfolioItems.map((item) => (
+          <Grid item xs={12} sm={4} key={item.title}>
+            <Link to={item.link} target="_blank">
+              <Card
+                className={`h-full flex flex-col ${item.disabled ? 'opacity-60 cursor-default' : 'cursor-pointer hover:shadow-lg hover:scale-105'}`}
+                sx={{ transition: 'all 0.3s' }}>
+                <CardMedia
+                  component="img"
+                  alt={item.title}
+                  className="h-[250px] object-cover"
+                  image={item.image}
+                  title={item.title}
+                />
+                <CardContent className="h-full">
+                  <Box className="h-full flex flex-col justify-between gap-2">
+                    <Box>
+                      <Typography variant="h6" component="div">
+                        {item.title}
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary">
+                        {item.description}
+                      </Typography>
                     </Box>
-                  </CardContent>
-                </Card>
-              </Link>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
+                    <Box className="flex gap-2">
+                      {item.tags.map((tag) => (
+                        <Chip key={tag} color="primary" label={tag} size="small" />
+                      ))}
+                    </Box>
+                  </Box>
+                </CardContent>
+              </Card>
+            </Link>
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   );
 }

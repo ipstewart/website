@@ -29,7 +29,7 @@ export const getHomeTheme = (mode: PaletteMode): ThemeOptions => ({
           // palette values for dark mode
           background: {
             default: '#040D12',
-            paper: '#5C8374',
+            paper: '#3B544F',
           },
           primary: {
             main: '#183D3D',

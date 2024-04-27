@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "check": "npm run format && npm run lint",
@@ -24,6 +24,7 @@
     "lottie-web": "^5.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.8.2",
     "react-router-dom": "^6.21.2",
     "react-scrollama": "^2.3.3"
   },
