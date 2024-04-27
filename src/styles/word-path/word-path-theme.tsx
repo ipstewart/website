@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 
-export const wordPathTheme = createTheme({
+export const lightTheme = createTheme({
   palette: {
     background: {
       default: '#E5FDFF',

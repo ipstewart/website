@@ -1,11 +1,8 @@
-import { ThemeProvider } from '@emotion/react';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
 import IconButton from '@mui/material/IconButton';
 import { useMemo, useState } from 'react';
 
-import { wordPathTheme } from '../../styles/word-path-theme';
 import InfoDialog from './InfoDialog/InfoDialog';
 import { Cell, SelectedPath, SubmittedWords } from './WordPath.schema';
 import { WordPathContext } from './WordPathContext';
@@ -53,32 +50,29 @@ function WordPathGame() {
   );
 
   return (
-    <ThemeProvider theme={wordPathTheme}>
-      <CssBaseline />
-      <WordPathContext.Provider value={wordPathProviderValue}>
-        <div className={styles.wordPathGame}>
-          <Box className="w-full flex justify-center" my={5}>
-            <Box className="relative flex flex-col items-center gap-6">
-              <Box className="absolute -top-2 right-0">
-                <IconButton
-                  aria-label="info"
-                  className="absolute"
-                  onClick={() => setOpenInfoDialog(true)}>
-                  <HelpOutlineIcon />
-                </IconButton>
-                <InfoDialog open={openInfoDialog} setOpen={setOpenInfoDialog} />
-              </Box>
-
-              <WordPathHeader />
-
-              <WordPathGrid />
-
-              <WordPathList />
+    <WordPathContext.Provider value={wordPathProviderValue}>
+      <div className={styles.wordPathGame}>
+        <Box className="w-full flex justify-center" my={5}>
+          <Box className="relative flex flex-col items-center gap-6">
+            <Box className="absolute -top-2 right-0">
+              <IconButton
+                aria-label="info"
+                className="absolute"
+                onClick={() => setOpenInfoDialog(true)}>
+                <HelpOutlineIcon />
+              </IconButton>
+              <InfoDialog open={openInfoDialog} setOpen={setOpenInfoDialog} />
             </Box>
+
+            <WordPathHeader />
+
+            <WordPathGrid />
+
+            <WordPathList />
           </Box>
-        </div>
-      </WordPathContext.Provider>
-    </ThemeProvider>
+        </Box>
+      </div>
+    </WordPathContext.Provider>
   );
 }
 

@@ -1,15 +1,22 @@
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import FormGroup from '@mui/material/FormGroup';
+import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { RefObject, useContext } from 'react';
 
-import { DarkModeSwitch } from './DarkModeSwitch';
+import { HomeThemeContext } from '../../../styles/home/HomeThemeContext';
 
-export default function Navbar({
-  toggleDarkMode,
-  projectsRef,
-}: Readonly<{ projectsRef: React.RefObject<HTMLDivElement>; toggleDarkMode: () => void }>) {
+interface NavbarProps {
+  projectsRef: RefObject<HTMLDivElement>;
+}
+
+export default function Navbar({ projectsRef }: Readonly<NavbarProps>) {
+  const { isDarkMode, toggleTheme } = useContext(HomeThemeContext);
+
   return (
     <FormGroup>
       <AppBar position="fixed" elevation={0} enableColorOnDark>
@@ -33,7 +40,13 @@ export default function Navbar({
             }>
             PORTFOLIO
           </Button>
-          <DarkModeSwitch onChange={() => toggleDarkMode()} defaultChecked />
+          <IconButton aria-label="info" color="secondary" size="medium" onClick={toggleTheme}>
+            {isDarkMode ? (
+              <LightModeIcon fontSize="inherit" />
+            ) : (
+              <DarkModeIcon fontSize="inherit" />
+            )}
+          </IconButton>
         </Toolbar>
       </AppBar>
     </FormGroup>

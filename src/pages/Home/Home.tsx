@@ -1,19 +1,16 @@
-import { ThemeProvider } from '@emotion/react';
-import { Card, CardContent, Link, PaletteMode } from '@mui/material';
+import { Card, CardContent, Link } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { createTheme, responsiveFontSizes } from '@mui/material/styles';
-import { useMemo, useRef, useState } from 'react';
+import { useContext, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import Scroller from '../../components/Scroller';
 import ScrollerCard from '../../components/ScrollerCard';
 import ScrollerOverlay from '../../components/ScrollerOverlay';
-import { getHomeTheme } from '../../styles/home-theme';
+import { HomeThemeContext } from '../../styles/home/HomeThemeContext';
 import Footer from '../Footer/Footer';
 import Portfolio from '../Portfolio/Portfolio';
 import { Carousel } from './Carousel/Carousel';
@@ -22,10 +19,10 @@ import MapAnimation, { MapAnimationRef } from './MapAnimation/MapAnimation';
 import Navbar from './Navbar/Navbar';
 
 function Home() {
+  const { isDarkMode } = useContext(HomeThemeContext);
+
   const mapRef = useRef<MapAnimationRef>(null);
   const projectsRef = useRef(null);
-
-  const [mode, setMode] = useState<PaletteMode>('light');
 
   const { ref: introRef, inView: introInView } = useInView({ triggerOnce: true });
   const { ref: schoolRef, inView: schoolInView } = useInView({ threshold: 0.5, triggerOnce: true });
@@ -42,20 +39,9 @@ function Home() {
     triggerOnce: true,
   });
 
-  const colorMode = useMemo(
-    () => ({
-      toggleColorMode: () => {
-        setMode((prevMode: PaletteMode) => (prevMode === 'light' ? 'dark' : 'light'));
-      },
-    }),
-    [],
-  );
-  const theme = useMemo(() => responsiveFontSizes(createTheme(getHomeTheme(mode))), [mode]);
-
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Navbar toggleDarkMode={colorMode.toggleColorMode} projectsRef={projectsRef} />
+    <>
+      <Navbar projectsRef={projectsRef} />
 
       <Box className={styles.introContainer} ref={introRef}>
         <Avatar
@@ -78,15 +64,9 @@ function Home() {
         <Box
           className={styles.arrowContainer}
           sx={{ opacity: introInView ? 1 : 0, transition: 'opacity .5s 1.5s' }}>
-          <div
-            className={mode === 'light' ? styles.arrow : `${styles.arrow} ${styles.arrowLight}`}
-          />
-          <div
-            className={mode === 'light' ? styles.arrow : `${styles.arrow} ${styles.arrowLight}`}
-          />
-          <div
-            className={mode === 'light' ? styles.arrow : `${styles.arrow} ${styles.arrowLight}`}
-          />
+          <div className={!isDarkMode ? styles.arrow : `${styles.arrow} ${styles.arrowLight}`} />
+          <div className={!isDarkMode ? styles.arrow : `${styles.arrow} ${styles.arrowLight}`} />
+          <div className={!isDarkMode ? styles.arrow : `${styles.arrow} ${styles.arrowLight}`} />
         </Box>
       </Box>
 
@@ -97,7 +77,7 @@ function Home() {
           <Grid container className="justify-center items-center h-full">
             <MapAnimation
               src={
-                mode === 'light'
+                !isDarkMode
                   ? 'animations/map-animation-light.json'
                   : 'animations/map-animation-dark.json'
               }
@@ -231,12 +211,12 @@ function Home() {
                     album, and apply for reality TV shows.
                   </Typography>
                   <Typography variant="body1" mb="0">
-                    If you know a casting agent from CBS's Survivor, please put me in contact. You
-                    can view my latest audition reel{' '}
+                    If you know a casting agent from CBS's Survivor, please put me in contact.{' '}
                     <Link
+                      color="info.main"
                       href="https://www.youtube.com/watch?v=BZSm9k2z2_o&ab_channel=IanStewart"
                       target="_blank">
-                      here
+                      You can view my latest audition reel here
                     </Link>
                     .
                   </Typography>
@@ -296,7 +276,7 @@ function Home() {
       </Container>
 
       <Footer />
-    </ThemeProvider>
+    </>
   );
 }
 
