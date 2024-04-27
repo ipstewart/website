@@ -22,7 +22,7 @@ export default function Navbar({
             disableElevation
             sx={{ mr: 2 }}
             onClick={() => portfolioRef.current?.scrollIntoView({ behavior: 'smooth' })}>
-            My Stuff
+            PROJECTS
           </Button>
           <DarkModeSwitch onChange={() => toggleDarkMode()} defaultChecked />
         </Toolbar>
