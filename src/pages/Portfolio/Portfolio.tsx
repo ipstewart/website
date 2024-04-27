@@ -77,7 +77,7 @@ function Portfolio() {
                       </Box>
                       <Box className="flex gap-2">
                         {item.tags.map((tag) => (
-                          <Chip color="primary" label={tag} size="small" />
+                          <Chip key={tag} color="primary" label={tag} size="small" />
                         ))}
                       </Box>
                     </Box>
