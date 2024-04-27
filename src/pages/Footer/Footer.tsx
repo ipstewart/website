@@ -1,48 +1,33 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
-import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import SendIcon from '@mui/icons-material/Send';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 
 function Footer() {
+  const iconButtonStyle = {
+    backgroundColor: 'primary.main',
+    color: 'primary.contrastText',
+    '&:hover': {
+      backgroundColor: 'secondary.main',
+      color: 'secondary.contrastText',
+    },
+  };
+
   return (
-    <Box
-      className="p-3 flex justify-center flex-wrap gap-3 border"
-      sx={{
-        borderTop: '1px solid #e0e0e0',
-      }}>
-      <Button
-        variant="contained"
-        disableElevation
-        href="mailto:stewart.p.ian@gmail.com"
-        startIcon={<SendIcon />}>
-        Email
-      </Button>
-      <Button
-        variant="contained"
-        disableElevation
-        target="_blank"
-        href="https://github.com/ipstewart"
-        startIcon={<GitHubIcon />}>
-        GitHub
-      </Button>
-      <Button
-        variant="contained"
-        disableElevation
+    <Box className="p-3 flex justify-center flex-wrap gap-3">
+      <IconButton href="mailto:stewart.p.ian@gmail.com" sx={iconButtonStyle}>
+        <SendIcon />
+      </IconButton>
+      <IconButton target="_blank" href="https://github.com/ipstewart" sx={iconButtonStyle}>
+        <GitHubIcon />
+      </IconButton>
+      <IconButton
         target="_blank"
         href="https://www.linkedin.com/in/ian-p-stewart/"
-        startIcon={<LinkedInIcon />}>
-        LinkedIn
-      </Button>
-      <Button
-        variant="contained"
-        disableElevation
-        target="_blank"
-        href="https://open.spotify.com/user/ianps737?si=f450137fffcd4c5b"
-        startIcon={<LibraryMusicIcon />}>
-        Spotify
-      </Button>
+        sx={iconButtonStyle}>
+        <LinkedInIcon />
+      </IconButton>
     </Box>
   );
 }
