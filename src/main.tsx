@@ -7,15 +7,25 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './index.css';
 import Home from './pages/Home/Home';
 import WordPathGame from './pages/WordPathGame/WordPathGame';
+import { HomeThemeProviderWrapper } from './styles/home/HomeThemeContext';
+import { WordPathThemeProviderWrapper } from './styles/word-path/WordThemeContext';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: (
+      <HomeThemeProviderWrapper>
+        <Home />
+      </HomeThemeProviderWrapper>
+    ),
   },
   {
     path: '/word-node-game',
-    element: <WordPathGame />,
+    element: (
+      <WordPathThemeProviderWrapper>
+        <WordPathGame />
+      </WordPathThemeProviderWrapper>
+    ),
   },
 ]);
 

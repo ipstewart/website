@@ -1,5 +1,4 @@
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 
@@ -78,29 +77,24 @@ export function Carousel() {
   };
 
   return (
-    <Grid container justifyContent="center" alignItems="center" height="100%">
-      <Grid item xs={0} sm={6} />
-      <Grid item xs={12} sm={6}>
-        <Box className={styles.wrapper}>
-          <Box className={styles.carousel}>
-            {items.map(({ title, description, icon }, index) => (
-              <Box key={title} className={getItemClassName(index)}>
-                <Box
-                  className={styles.carouselItemIcon}
-                  sx={{ backgroundColor: 'primary.light', borderColor: 'primary.main' }}>
-                  {String.fromCodePoint(icon)}
-                </Box>
-                <Box
-                  className={styles.carouselItemBody}
-                  sx={{ backgroundColor: 'background.default', borderColor: 'primary.main' }}>
-                  <Typography variant="h6">{title}</Typography>
-                  <Typography variant="body2">{description}</Typography>
-                </Box>
-              </Box>
-            ))}
+    <Box className={styles.wrapper}>
+      <Box className={styles.carousel}>
+        {items.map(({ title, description, icon }, index) => (
+          <Box key={title} className={getItemClassName(index)}>
+            <Box
+              className={styles.carouselItemIcon}
+              sx={{ backgroundColor: 'primary.light', borderColor: 'primary.main' }}>
+              {String.fromCodePoint(icon)}
+            </Box>
+            <Box
+              className={styles.carouselItemBody}
+              sx={{ backgroundColor: 'background.default', borderColor: 'primary.main' }}>
+              <Typography variant="h6">{title}</Typography>
+              <Typography variant="body2">{description}</Typography>
+            </Box>
           </Box>
-        </Box>
-      </Grid>
-    </Grid>
+        ))}
+      </Box>
+    </Box>
   );
 }
