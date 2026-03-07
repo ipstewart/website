@@ -1,3 +1,4 @@
 {
+	"version": 24,
 	"rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
